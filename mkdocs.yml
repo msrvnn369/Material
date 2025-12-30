@@ -7,6 +7,9 @@ site_url: https://msrvnn369.github.io/Material/
 theme:
   name: material
   custom_dir: overrides
+  font:
+    text: STIX Two Text
+    code: JetBrains Mono
   features:
     - navigation.sections
     - navigation.expand

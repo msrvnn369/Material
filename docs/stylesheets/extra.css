@@ -1,3 +1,9 @@
+.md-typeset,
+.md-content,
+body {
+  font-family: "STIX Two Text", "Times New Roman", Times, serif;
+}
+
 .mol3d {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 8px;
