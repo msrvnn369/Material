@@ -33,6 +33,13 @@ This site is set up so you can keep **repeatable, consistent** assets:
 
 Place files under `docs/assets/molecules/`.
 
+### House rule (for this site)
+
+For teaching, **3D models should be labeled**:
+
+- show **key bond lengths** (and, when relevant, **key bond angles**) directly on the embedded viewer
+- avoid “pretty but unlabeled” models
+
 ### Embedding an interactive viewer
 
 Add a div like this:
@@ -46,6 +53,22 @@ Supported attributes:
 - `data-model`: required, path under `/assets/molecules/...`
 - `data-style`: `stick` (default), `line`, `sphere`
 - `data-bg`: `white` (default) or any CSS color
+
+#### Measurement labels (recommended)
+
+Use `data-measure` with 1-based atom indices from the SDF:
+
+```html
+<div
+  class="mol3d"
+  data-model="/assets/molecules/diborane_model.sdf"
+  data-style="stick"
+  data-measure="dist:1-2,dist:1-7,angle:1-7-2"
+></div>
+```
+
+- `dist:i-j` shows distance \(i \leftrightarrow j\) in Å
+- `angle:i-j-k` shows \(\angle i\!-\!j\!-\!k\) in degrees (vertex is `j`)
 
 ## How to generate 3D coordinates (practical options)
 

@@ -41,7 +41,13 @@ That’s the clean geometric reason A is not correct.
 
 This is a simple bridged model intended for teaching (SDF does not have true “3-center bonds”, so we represent each bridge as two B–H single bonds):
 
-<div class="mol3d" data-model="/assets/molecules/diborane_model.sdf" data-style="stick"></div>
+<div
+  class="mol3d"
+  data-model="/assets/molecules/diborane_model.sdf"
+  data-style="stick"
+  data-measure="dist:1-2,dist:1-3,dist:2-5,dist:1-7,dist:2-7,angle:1-7-2"
+  data-label-size="13"
+></div>
 
 ## Typical bond lengths / angles (order-of-magnitude correct)
 
