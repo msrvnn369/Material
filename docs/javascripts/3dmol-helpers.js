@@ -346,7 +346,20 @@ function renderAllMol3D() {
   });
 }
 
-// MkDocs Material does instant navigation; hook both events.
-document.addEventListener("DOMContentLoaded", renderAllMol3D);
+// MkDocs Material may load extra JS after DOMContentLoaded.
+// Ensure we render immediately if the DOM is already ready.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderAllMol3D);
+} else {
+  renderAllMol3D();
+}
+
+// MkDocs Material instant navigation hooks.
 document.addEventListener("navigation:complete", renderAllMol3D);
+
+// Material also exposes document$ (Rx-like) in many builds.
+// This is the most reliable hook across versions.
+if (window.document$ && typeof window.document$.subscribe === "function") {
+  window.document$.subscribe(() => renderAllMol3D());
+}
 
