@@ -53,6 +53,27 @@ function midpoint(a, b) {
   return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, z: (a.z + b.z) / 2 };
 }
 
+function normalize(v) {
+  const n = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z) || 1;
+  return { x: v.x / n, y: v.y / n, z: v.z / n };
+}
+
+function cross(a, b) {
+  return { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x };
+}
+
+function add(a, b) {
+  return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
+}
+
+function sub(a, b) {
+  return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
+}
+
+function mul(v, s) {
+  return { x: v.x * s, y: v.y * s, z: v.z * s };
+}
+
 function parseMeasures(spec) {
   // Format:
   // "dist:1-2,dist:1-7,angle:1-7-2"
@@ -82,8 +103,38 @@ function parseMeasures(spec) {
     .filter(Boolean);
 }
 
+function parsePlane(spec) {
+  // Format:
+  // "atoms:1-2-3-4-5-6;size:4;color:#0077cc;opacity:0.22;grid:9"
+  if (!spec) return null;
+  const parts = spec.split(";").map((s) => s.trim()).filter(Boolean);
+  const out = {
+    atoms: [],
+    size: 4,
+    color: "#0077cc",
+    opacity: 0.22,
+    grid: 9,
+  };
+  for (const p of parts) {
+    const [kRaw, vRaw] = p.split(":");
+    const k = (kRaw || "").trim().toLowerCase();
+    const v = (vRaw || "").trim();
+    if (!k) continue;
+    if (k === "atoms") {
+      out.atoms = v
+        .split("-")
+        .map((n) => parseInt(n, 10))
+        .filter((n) => Number.isFinite(n));
+    } else if (k === "size") out.size = parseFloat(v) || out.size;
+    else if (k === "color") out.color = v || out.color;
+    else if (k === "opacity") out.opacity = Math.max(0, Math.min(1, parseFloat(v)));
+    else if (k === "grid") out.grid = Math.max(3, Math.min(25, parseInt(v, 10) || out.grid));
+  }
+  return out.atoms.length >= 3 ? out : null;
+}
+
 function labelStyleFromContainer(container) {
-  const fontSize = parseFloat(container.getAttribute("data-label-size") || "12");
+  const fontSize = parseFloat(container.getAttribute("data-label-size") || "11");
   const fontColor = container.getAttribute("data-label-color") || "#111";
   const bg = container.getAttribute("data-label-bg") || "rgba(255,255,255,0.80)";
   const border = container.getAttribute("data-label-border") || "rgba(0,0,0,0.25)";
@@ -96,6 +147,21 @@ function labelStyleFromContainer(container) {
     inFront: true,
     showBackground: true,
   };
+}
+
+function atomTag(atom, idx1) {
+  const e = atom?.elem || "?";
+  return `${e}${idx1}`;
+}
+
+function preferredPerpOffset(vec) {
+  // Choose a stable perpendicular direction for label offsets
+  const z = { x: 0, y: 0, z: 1 };
+  const y = { x: 0, y: 1, z: 0 };
+  let p = cross(vec, z);
+  const pn = Math.sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
+  if (pn < 1e-6) p = cross(vec, y);
+  return normalize(p);
 }
 
 function addMeasurementLabels(viewer, model, measures, container) {
@@ -113,20 +179,102 @@ function addMeasurementLabels(viewer, model, measures, container) {
       if (!a || !b) return;
       const d = dist(a, b);
       const pos = midpoint(a, b);
-      // slight offset to reduce overlap with bonds
-      pos.z += 0.12;
-      viewer.addLabel(`${d.toFixed(2)} Å`, { position: pos, ...style });
+      const bondVec = normalize(sub(b, a));
+      const off = preferredPerpOffset(bondVec);
+      const labelPos = add(pos, mul(off, 0.35));
+      labelPos.z += 0.10;
+
+      // leader line (best practice: makes it obvious what the label refers to)
+      viewer.addLine({
+        start: pos,
+        end: labelPos,
+        color: "#666",
+        opacity: 0.6,
+        dashed: true,
+      });
+
+      const label = `${atomTag(a, m.i)}–${atomTag(b, m.j)}  ${d.toFixed(2)} Å`;
+      viewer.addLabel(label, { position: labelPos, ...style });
     } else if (m.kind === "angle") {
       const a = getAtom(m.i);
       const b = getAtom(m.j);
       const c = getAtom(m.k);
       if (!a || !b || !c) return;
       const ang = angleDeg(a, b, c);
-      // Place label near the vertex atom with a small offset
-      const pos = { x: b.x, y: b.y, z: b.z + 0.22 };
-      viewer.addLabel(`${ang.toFixed(1)}°`, { position: pos, ...style });
+      const v1 = normalize(sub(a, b));
+      const v2 = normalize(sub(c, b));
+      const bis = normalize(add(v1, v2));
+      const labelPos = add(b, mul(bis, 0.55));
+      labelPos.z += 0.12;
+
+      viewer.addLine({
+        start: { x: b.x, y: b.y, z: b.z },
+        end: labelPos,
+        color: "#666",
+        opacity: 0.6,
+        dashed: true,
+      });
+
+      const label = `∠${atomTag(a, m.i)}–${atomTag(b, m.j)}–${atomTag(c, m.k)}  ${ang.toFixed(1)}°`;
+      viewer.addLabel(label, { position: labelPos, ...style });
     }
   });
+}
+
+function addPlaneGrid(viewer, model, planeSpec) {
+  if (!planeSpec) return;
+  const atoms = model.selectedAtoms({});
+  const getAtom = (idx1) => atoms[idx1 - 1];
+  const pts = planeSpec.atoms.map((i) => getAtom(i)).filter(Boolean);
+  if (pts.length < 3) return;
+
+  // pick 3 points to define a plane and build a rectangle centered at centroid
+  const c = pts.reduce((acc, p) => add(acc, p), { x: 0, y: 0, z: 0 });
+  const centroid = mul(c, 1 / pts.length);
+
+  const a0 = pts[0];
+  // find a point not equal to a0
+  const a1 = pts.find((p) => dist(p, a0) > 1e-6) || pts[1];
+  const a2 = pts.find((p) => {
+    const v1 = sub(a1, a0);
+    const v2 = sub(p, a0);
+    const cr = cross(v1, v2);
+    return Math.sqrt(cr.x * cr.x + cr.y * cr.y + cr.z * cr.z) > 1e-6;
+  }) || pts[2];
+
+  const u = normalize(sub(a1, a0));
+  const n = normalize(cross(sub(a1, a0), sub(a2, a0)));
+  const v = normalize(cross(n, u));
+
+  const half = planeSpec.size / 2;
+  const p00 = add(add(centroid, mul(u, -half)), mul(v, -half));
+  const p10 = add(add(centroid, mul(u, half)), mul(v, -half));
+  const p01 = add(add(centroid, mul(u, -half)), mul(v, half));
+  const p11 = add(add(centroid, mul(u, half)), mul(v, half));
+
+  // draw outline
+  const edges = [
+    [p00, p10],
+    [p10, p11],
+    [p11, p01],
+    [p01, p00],
+  ];
+  edges.forEach(([s, e]) =>
+    viewer.addLine({ start: s, end: e, color: planeSpec.color, opacity: Math.min(1, planeSpec.opacity + 0.15) }),
+  );
+
+  // draw a grid (gives a “plane” feel without relying on unsupported polygon primitives)
+  const steps = planeSpec.grid;
+  for (let i = 1; i < steps; i++) {
+    const t = -half + (i * planeSpec.size) / steps;
+    const s1 = add(add(centroid, mul(u, -half)), mul(v, t));
+    const e1 = add(add(centroid, mul(u, half)), mul(v, t));
+    viewer.addLine({ start: s1, end: e1, color: planeSpec.color, opacity: planeSpec.opacity });
+
+    const s2 = add(add(centroid, mul(u, t)), mul(v, -half));
+    const e2 = add(add(centroid, mul(u, t)), mul(v, half));
+    viewer.addLine({ start: s2, end: e2, color: planeSpec.color, opacity: planeSpec.opacity });
+  }
 }
 
 async function renderMol3D(container) {
@@ -134,6 +282,7 @@ async function renderMol3D(container) {
   const style = container.getAttribute("data-style") || "stick";
   const background = container.getAttribute("data-bg") || "white";
   const measuresSpec = container.getAttribute("data-measure") || "";
+  const planeSpecRaw = container.getAttribute("data-plane") || "";
 
   if (!modelUrl) return;
 
@@ -177,6 +326,9 @@ async function renderMol3D(container) {
 
   const measures = parseMeasures(measuresSpec);
   addMeasurementLabels(viewer, model, measures, container);
+
+  const planeSpec = parsePlane(planeSpecRaw);
+  addPlaneGrid(viewer, model, planeSpec);
 
   viewer.zoomTo();
   viewer.render();

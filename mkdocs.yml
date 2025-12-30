@@ -6,12 +6,14 @@ site_url: https://msrvnn369.github.io/Material/
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.sections
     - navigation.expand
     - content.code.copy
 
 markdown_extensions:
+  - meta
   - admonition
   - footnotes
   - toc:

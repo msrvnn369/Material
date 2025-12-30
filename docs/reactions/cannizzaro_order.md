@@ -1,3 +1,6 @@
+# Author: msrvnn369
+# Date: 2025-12-30
+
 # Cannizzaro reaction: why “4th order” shows up (and what it really means)
 
 ## The reaction

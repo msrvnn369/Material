@@ -1,3 +1,6 @@
+# Author: msrvnn369
+# Date: 2025-12-30
+
 # SN2 reactions: major patterns + exceptions
 
 ## The core pattern

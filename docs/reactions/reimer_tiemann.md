@@ -1,3 +1,6 @@
+# Author: msrvnn369
+# Date: 2025-12-30
+
 # Reimer–Tiemann reaction (mechanism-first)
 
 ## What it does

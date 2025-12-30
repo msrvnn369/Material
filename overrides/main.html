@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{ super() }}
+
+  {# Comments (GitHub Issues via Utterances) #}
+  <hr />
+  <h2 id="comments">Comments</h2>
+  <p class="comments-hint">
+    Comments are moderated. If yours doesn’t appear right away, it may have been automatically flagged for review.
+  </p>
+  <div id="utterances"></div>
+  <script
+    src="https://utteranc.es/client.js"
+    repo="msrvnn369/Material"
+    issue-term="pathname"
+    label="comments"
+    theme="github-light"
+    crossorigin="anonymous"
+    async
+  ></script>
+{% endblock %}
+

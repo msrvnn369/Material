@@ -1,0 +1,69 @@
+name: Auto-moderate comments (utterances)
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  issues: write
+
+concurrency:
+  group: "moderate-comments"
+  cancel-in-progress: false
+
+jobs:
+  moderate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-moderate spam/offensive comments
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = (context.payload.comment?.body || "").toLowerCase();
+            const nodeId = context.payload.comment?.node_id;
+            const issueNumber = context.payload.issue?.number;
+            const repo = context.repo.repo;
+            const owner = context.repo.owner;
+
+            // Only moderate utterances issues (we label them "comments")
+            const labels = (context.payload.issue?.labels || []).map(l => (l.name || "").toLowerCase());
+            if (!labels.includes("comments")) return;
+
+            // Lightweight heuristics + a small configurable banned list.
+            // You can expand this list later.
+            const banned = [
+              "buy now",
+              "free money",
+              "casino",
+              "porn",
+              "viagra",
+              "sex",
+              "escort",
+              "loan",
+              "bitcoin giveaway"
+            ];
+
+            const tooManyLinks = (body.match(/https?:\/\//g) || []).length >= 3;
+            const hasBanned = banned.some(w => body.includes(w));
+
+            if (!nodeId) return;
+            if (!tooManyLinks && !hasBanned) return;
+
+            // Minimize the comment as SPAM (hides it by default).
+            // GraphQL mutation works for IssueComment.
+            await github.graphql(`
+              mutation($id:ID!, $classifier:ReportedContentClassifiers!) {
+                minimizeComment(input:{subjectId:$id, classifier:$classifier}) {
+                  minimizedComment { isMinimized }
+                }
+              }
+            `, { id: nodeId, classifier: "SPAM" });
+
+            // Leave a maintainer-facing note on the issue for audit trail.
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              body: "Automod: minimized a comment as **SPAM** (heuristic trigger). Maintainers can un-minimize if false positive."
+            });
+

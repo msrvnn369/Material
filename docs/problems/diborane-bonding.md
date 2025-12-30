@@ -1,3 +1,6 @@
+# Author: msrvnn369
+# Date: 2025-12-30
+
 # Worked example: Diborane (B₂H₆) bonding + geometry
 
 ## The key picture
@@ -46,7 +49,8 @@ This is a simple bridged model intended for teaching (SDF does not have true “
   data-model="/assets/molecules/diborane_model.sdf"
   data-style="stick"
   data-measure="dist:1-2,dist:1-3,dist:2-5,dist:1-7,dist:2-7,angle:1-7-2"
-  data-label-size="13"
+  data-plane="atoms:1-2-3-4-5-6;size:4;color:#0066cc;opacity:0.18;grid:10"
+  data-label-size="10.5"
 ></div>
 
 ## Typical bond lengths / angles (order-of-magnitude correct)
