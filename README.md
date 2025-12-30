@@ -4,11 +4,11 @@ This repo contains an MkDocs site for compiling **organic reactions**, **mechani
 
 ## View the site
 
-### Option A: open the already-built static site (fastest)
+### Option A: GitHub Pages (share with students)
 
-The static build output is in `site/`.
+Once the GitHub Pages workflow runs on `main`, the site will be available at:
 
-- Open `site/index.html` in a browser.
+`https://msrvnn369.github.io/Material/`
 
 ### Option B: build + serve locally
 

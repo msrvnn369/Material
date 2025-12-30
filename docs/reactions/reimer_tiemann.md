@@ -50,7 +50,7 @@ In many phenols:
 
 For now this repo includes a **starter SVG** (meant as a placeholder until we generate ChemDraw-quality figures):
 
-![Reimer–Tiemann (placeholder mechanism overview)](/assets/mechanisms/reimer_tiemann_placeholder.svg)
+![Reimer–Tiemann (placeholder mechanism overview)](../assets/mechanisms/reimer_tiemann_placeholder.svg)
 
 ## Common failure modes
 

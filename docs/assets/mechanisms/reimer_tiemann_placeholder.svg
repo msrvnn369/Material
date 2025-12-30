@@ -16,20 +16,20 @@
 
   <rect class="box" x="20" y="30" width="280" height="220"/>
   <text class="t h" x="40" y="70">Step 1: generate carbene</text>
-  <text class="t b" x="40" y="110">CHClƒ + OH{ Ì CClƒ{ + H‚O</text>
-  <text class="t b" x="40" y="150">CClƒ{ ’ :CCl‚ + Cl{</text>
+  <text class="t b" x="40" y="110">CHCl3 + OH- &lt;-&gt; CCl3- + H2O</text>
+  <text class="t b" x="40" y="150">CCl3- -&gt; :CCl2 + Cl-</text>
   <text class="t s" x="40" y="190">Key idea: base forms</text>
-  <text class="t s" x="40" y="210">dichlorocarbene (:CCl‚).</text>
+  <text class="t s" x="40" y="210">dichlorocarbene (:CCl2).</text>
 
   <path class="arrow" d="M310 140 C 360 140, 380 140, 430 140"/>
 
   <rect class="box" x="440" y="30" width="260" height="220"/>
   <text class="t h" x="460" y="70">Step 2: ring attack</text>
-  <text class="t b" x="460" y="110">PhO{ + :CCl‚ ’ Ã-complex</text>
+  <text class="t b" x="460" y="110">PhO- + :CCl2 -&gt; sigma-complex</text>
   <text class="t s" x="460" y="150">Attack occurs ortho/para</text>
   <text class="t s" x="460" y="170">to phenoxide oxygen.</text>
   <text class="t s" x="460" y="210">Then rearomatization</text>
-  <text class="t s" x="460" y="230">gives ArCCl‚.</text>
+  <text class="t s" x="460" y="230">gives Ar-CCl2.</text>
 
   <path class="arrow" d="M710 140 C 760 140, 780 140, 830 140"/>
 
@@ -37,7 +37,7 @@
   <text class="t h" x="855" y="70">Step 3</text>
   <text class="t b" x="855" y="110">Hydrolysis</text>
   <text class="t b" x="855" y="130">+ workup</text>
-  <text class="t b" x="855" y="170">ArCHO</text>
+  <text class="t b" x="855" y="170">Ar-CHO</text>
   <text class="t s" x="855" y="210">Formyl carbon</text>
-  <text class="t s" x="855" y="230">comes from CHClƒ.</text>
+  <text class="t s" x="855" y="230">comes from CHCl3.</text>
 </svg>

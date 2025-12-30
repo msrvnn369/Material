@@ -4,6 +4,33 @@
  * Usage (in Markdown):
  * <div class="mol3d" data-model="/assets/molecules/ethanol.sdf"></div>
  */
+function pagesBasePrefixFromCanonical() {
+  const canonical = document.querySelector('link[rel="canonical"]')?.href;
+  if (!canonical) return "";
+  try {
+    const u = new URL(canonical);
+    const parts = u.pathname.split("/").filter(Boolean);
+    // For GitHub Pages project sites, the first path segment is the repo name.
+    return parts.length >= 1 ? `/${parts[0]}` : "";
+  } catch {
+    return "";
+  }
+}
+
+async function fetchTextWithFallback(urlCandidates) {
+  let lastErr = null;
+  for (const url of urlCandidates) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return { url, text: await res.text() };
+      lastErr = new Error(`HTTP ${res.status} for ${url}`);
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  throw lastErr || new Error("Failed to fetch model");
+}
+
 async function renderMol3D(container) {
   const modelUrl = container.getAttribute("data-model");
   const style = container.getAttribute("data-style") || "stick";
@@ -16,12 +43,27 @@ async function renderMol3D(container) {
 
   const viewer = $3Dmol.createViewer(container, { backgroundColor: background });
 
-  const res = await fetch(modelUrl);
-  if (!res.ok) {
-    container.innerText = `Failed to load model: ${modelUrl}`;
+  const basePrefix = pagesBasePrefixFromCanonical();
+  const candidates = [];
+
+  // If someone uses "/assets/..." (works on local `mkdocs serve`),
+  // it *won't* work on GitHub Pages project sites (needs "/<repo>/assets/...").
+  if (modelUrl.startsWith("/assets/") && basePrefix) {
+    candidates.push(`${basePrefix}${modelUrl}`);
+  }
+  candidates.push(modelUrl);
+  if (modelUrl.startsWith(`${basePrefix}/assets/`)) {
+    candidates.push(modelUrl.replace(basePrefix, ""));
+  }
+
+  let data;
+  try {
+    const fetched = await fetchTextWithFallback(candidates);
+    data = fetched.text;
+  } catch (err) {
+    container.innerText = `Failed to load model. Tried: ${candidates.join(", ")}`;
     return;
   }
-  const data = await res.text();
 
   // Try SDF first; 3Dmol also supports "mol" for V2000 molfiles.
   // We'll guess from extension if present.

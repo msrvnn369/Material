@@ -1,7 +1,8 @@
 site_name: Organic Chemistry Notes
 site_description: A curated compilation of organic reactions, mechanisms, exceptions, and models.
 repo_name: workspace
-repo_url: ""
+repo_url: https://github.com/msrvnn369/Material
+site_url: https://msrvnn369.github.io/Material/
 
 theme:
   name: material
