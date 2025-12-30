@@ -4,6 +4,27 @@
  * Usage (in Markdown):
  * <div class="mol3d" data-model="/assets/molecules/ethanol.sdf"></div>
  */
+function webglAvailable() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch {
+    return false;
+  }
+}
+
+async function waitFor3Dmol({ timeoutMs = 15000, pollMs = 100 } = {}) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    if (typeof window.$3Dmol !== "undefined") return;
+    await new Promise((r) => setTimeout(r, pollMs));
+  }
+  throw new Error("3Dmol library did not load (timeout)");
+}
+
 function pagesBasePrefixFromCanonical() {
   const canonical = document.querySelector('link[rel="canonical"]')?.href;
   if (!canonical) return "";
@@ -289,7 +310,23 @@ async function renderMol3D(container) {
   container.style.width = container.style.width || "100%";
   container.style.height = container.style.height || "380px";
 
-  const viewer = $3Dmol.createViewer(container, { backgroundColor: background });
+  // Ensure we fail loudly instead of rendering a blank box.
+  container.innerText = "Loading 3D model…";
+
+  if (!webglAvailable()) {
+    container.innerText = "Interactive 3D model unavailable (WebGL disabled/not supported).";
+    return;
+  }
+
+  await waitFor3Dmol();
+
+  let viewer;
+  try {
+    viewer = window.$3Dmol.createViewer(container, { backgroundColor: background });
+  } catch (e) {
+    container.innerText = `3D viewer init failed: ${e?.message || String(e)}`;
+    return;
+  }
 
   const basePrefix = pagesBasePrefixFromCanonical();
   const candidates = [];
@@ -335,13 +372,16 @@ async function renderMol3D(container) {
 }
 
 function renderAllMol3D() {
-  if (typeof $3Dmol === "undefined") return;
   document.querySelectorAll(".mol3d").forEach((el) => {
     // Avoid double-render on MkDocs live reload
     if (el.getAttribute("data-rendered") === "true") return;
-    el.setAttribute("data-rendered", "true");
+    if (el.getAttribute("data-rendering") === "true") return;
+    el.setAttribute("data-rendering", "true");
     renderMol3D(el).catch((err) => {
       el.innerText = `3D render error: ${err?.message || String(err)}`;
+    }).finally(() => {
+      el.setAttribute("data-rendered", "true");
+      el.setAttribute("data-rendering", "false");
     });
   });
 }
