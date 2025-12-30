@@ -1,21 +1,8 @@
 # Organic Chemistry Notes (Docs Site)
 
-This repo contains an MkDocs site for compiling **organic reactions**, **mechanisms**, **exceptions**, and **3D molecular models**.
-
-## View the site
-
-### Option A: GitHub Pages (share with students)
-
-Once the GitHub Pages workflow runs on `main`, the site will be available at:
+This repo is the source for the class site:
 
 `https://msrvnn369.github.io/Material/`
-
-### Option B: build + serve locally
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 -m mkdocs serve
-```
 
 ## What’s included right now
 
