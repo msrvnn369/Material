@@ -36,5 +36,7 @@ nav:
       - SN2 (major patterns + exceptions): reactions/sn2.md
       - Reimer–Tiemann: reactions/reimer_tiemann.md
       - Cannizzaro (why "4th order" appears): reactions/cannizzaro_order.md
+  - Worked examples:
+      - Diborane (B2H6) bonding + geometry: problems/diborane-bonding.md
   - Graphics & 3D models:
       - Workflow: graphics_and_models.md
