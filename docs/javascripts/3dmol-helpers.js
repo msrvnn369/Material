@@ -38,14 +38,19 @@ function pagesBasePrefixFromCanonical() {
   }
 }
 
-async function fetchTextWithFallback(urlCandidates) {
+async function fetchTextWithFallback(urlCandidates, { timeoutMs = 12000 } = {}) {
   let lastErr = null;
   for (const url of urlCandidates) {
     try {
-      const res = await fetch(url);
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), timeoutMs);
+      const res = await fetch(url, { signal: ctrl.signal, cache: "no-store" });
+      clearTimeout(t);
       if (res.ok) return { url, text: await res.text() };
       lastErr = new Error(`HTTP ${res.status} for ${url}`);
     } catch (e) {
+      if (e?.name === "AbortError") lastErr = new Error(`Timeout fetching ${url}`);
+      else
       lastErr = e;
     }
   }
@@ -318,6 +323,7 @@ async function renderMol3D(container) {
     return;
   }
 
+  container.innerText = "Loading 3D model… (initializing viewer)";
   await waitFor3Dmol();
 
   let viewer;
@@ -343,7 +349,8 @@ async function renderMol3D(container) {
 
   let data;
   try {
-    const fetched = await fetchTextWithFallback(candidates);
+    container.innerText = "Loading 3D model… (fetching coordinates)";
+    const fetched = await fetchTextWithFallback(candidates, { timeoutMs: 12000 });
     data = fetched.text;
   } catch (err) {
     container.innerText = `Failed to load model. Tried: ${candidates.join(", ")}`;
