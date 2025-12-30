@@ -134,16 +134,16 @@ function parsePlane(spec) {
 }
 
 function labelStyleFromContainer(container) {
-  const fontSize = parseFloat(container.getAttribute("data-label-size") || "11");
+  const fontSize = parseFloat(container.getAttribute("data-label-size") || "9");
   const fontColor = container.getAttribute("data-label-color") || "#111";
-  const bg = container.getAttribute("data-label-bg") || "rgba(255,255,255,0.80)";
-  const border = container.getAttribute("data-label-border") || "rgba(0,0,0,0.25)";
+  const bg = container.getAttribute("data-label-bg") || "rgba(255,255,255,0.65)";
+  const border = container.getAttribute("data-label-border") || "rgba(0,0,0,0.18)";
   return {
     fontSize,
     fontColor,
     backgroundColor: bg,
     borderColor: border,
-    borderThickness: 1,
+    borderThickness: 0.8,
     inFront: true,
     showBackground: true,
   };
