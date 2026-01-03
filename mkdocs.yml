@@ -3,6 +3,7 @@ site_description: A curated compilation of organic reactions, mechanisms, except
 repo_name: workspace
 repo_url: https://github.com/msrvnn369/Material
 site_url: https://msrvnn369.github.io/Material/
+use_directory_urls: true
 
 theme:
   name: material
