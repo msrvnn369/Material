@@ -16,6 +16,10 @@ Use this as a checklist. I can expand each chapter into a separate page with:
 - common pitfalls + “why” explanations
 - a few original practice questions + solutions
 
+## Quick revision tables
+
+- [Oxidising agents (table)](oxidising-agents.md)
+
 ### Some Basic Concepts of Chemistry
 
 - Mole concept, stoichiometry, limiting reagent
