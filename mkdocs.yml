@@ -3,6 +3,7 @@ site_description: A curated compilation of organic reactions, mechanisms, except
 repo_name: workspace
 repo_url: https://github.com/msrvnn369/Material
 site_url: https://msrvnn369.github.io/Material/
+use_directory_urls: true
 
 theme:
   name: material
@@ -37,6 +38,15 @@ extra_css:
 
 nav:
   - Home: index.md
+  - Reagents:
+      - Reagents index: reagents/index.md
+      - Oxidising agents: reagents/oxidising_agents.md
+      - Reducing agents: reagents/reducing_agents.md
+      - Halogenating agents: reagents/halogenating_agents.md
+      - Dehydrating & drying agents: reagents/dehydrating_drying_agents.md
+      - Acids & bases: reagents/acids_bases.md
+      - Lewis acids & catalysts: reagents/lewis_acids_catalysts.md
+      - Solvents: reagents/solvents.md
   - Questions:
       - List major SN2 reactions and exceptions: reactions/sn2.md
       - Mechanism of the Reimer–Tiemann reaction: reactions/reimer_tiemann.md

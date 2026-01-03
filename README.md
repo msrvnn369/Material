@@ -6,6 +6,7 @@ This repo is the source for the class site:
 
 ## What’s included right now
 
+- Reagents cheat-sheet index (NCERT-oriented): `docs/reagents/index.md`
 - SN2 overview + common exceptions: `docs/reactions/sn2.md`
 - Reimer–Tiemann overview: `docs/reactions/reimer_tiemann.md`
 - Cannizzaro “4th order” discussion: `docs/reactions/cannizzaro_order.md`
