@@ -13,3 +13,4 @@ This site is a running index of **chemistry doubts cleared**.
 
 - [NCERT Chemistry — Class 11 (Textbooks)](ncert/chemistry/class-11.md)
 - [NCERT Chemistry — Class 12 (Textbooks)](ncert/chemistry/class-12.md)
+- [Oxidising agents — exam table](ncert/chemistry/oxidising-agents.md)

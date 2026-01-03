@@ -1,45 +1,51 @@
-# Oxidising agents (NCERT Chem Class 11 + 12) — quick table
+# Oxidising agents (NCERT Chem Class 11 + 12) — exam-ready table
 
-This is a **revision table** of common **oxidising agents / oxidising reagents** used across NCERT Chemistry (inorganic + organic contexts).
+This is a **revision + exam-use** table of common **oxidising agents / oxidising reagents** used across NCERT Chemistry (inorganic + organic contexts).
 
 > “Oxidising agent” here means: the reagent **gets reduced** and causes the other species to be **oxidised**.
 
-## Table of oxidising reagents
+## How to use (fast)
 
-| Oxidising reagent / oxidant | Typical “what it oxidises” (NCERT-level) | Common reduced form (what the oxidant becomes) | Notes / where it shows up |
+- **First check the medium**: acidic vs neutral vs basic (many oxidants change product).
+- **Then remember the “one-line signature”**: color change / gas / precipitate.
+- **Then map to chapter**: Class 11 Redox + p‑block; Class 12 Electrochem + d/f + organic.
+
+## Exam-ready table (with medium + strength + chapter mapping)
+
+Legend for **Strength**: **Strong / Moderate / Mild** (board-level usage; depends on substrate).
+
+| Oxidising reagent / oxidant | Medium / conditions (typical) | Strength | “Signature” / common observation | What it oxidises (NCERT-style examples) | Reduced form (oxidant becomes) | NCERT chapters (where it fits) |
 |---|---|---|---|
-| **Oxygen (O₂)** | Metals/non-metals → oxides; many combustions | O²⁻ (in oxides), H₂O (in combustion) | Very common oxidant; basis of oxidation in air |
-| **Ozone (O₃)** | Strong oxidations; used for **ozonolysis** of alkenes (organic) | O₂ | Organic reactions + atmospheric chemistry context |
-| **Halogens: Cl₂, Br₂ (and F₂)** | Oxidise I⁻ → I₂, Fe²⁺ → Fe³⁺, etc.; halogenation reactions (organic) | Cl⁻ / Br⁻ / F⁻ | Relative strength: F₂ > Cl₂ > Br₂ > I₂ (as oxidants) |
-| **Hydrogen peroxide (H₂O₂)** | Oxidises many species (context-dependent) | H₂O | Can act as oxidant or reductant; NCERT highlights both behavior and conditions |
-| **Acidified potassium permanganate (KMnO₄ / H⁺)** | Fe²⁺ → Fe³⁺, oxalate → CO₂, many organic oxidations (strong) | Mn²⁺ | Strong oxidant in acidic medium |
-| **Alkaline/neutral KMnO₄** | Mild oxidations; e.g., unsaturation tests (Baeyer) | MnO₂ (brown ppt) / MnO₄²⁻ (depends) | Medium matters (acidic vs alkaline) |
-| **Potassium dichromate (K₂Cr₂O₇ / H⁺)** | Alcohols/organic substrates; Fe²⁺ → Fe³⁺, etc. | Cr³⁺ | Classic “orange → green” redox indicator in acidic medium |
-| **Chromic acid / CrO₃ in acid (often written as [O])** | Strong oxidation of organic functional groups (NCERT conversions) | Cr³⁺ | Often grouped with dichromate as “chromium(VI) oxidants” |
-| **Concentrated nitric acid (HNO₃)** | Oxidises metals/non-metals; strong oxidations in p‑block chemistry | NO₂ / NO / other N-oxides | Acts as oxidising acid; products depend on conditions |
-| **Concentrated sulfuric acid (H₂SO₄, hot)** | Oxidises e.g. I⁻/Br⁻ in reactions; dehydrating + oxidising in some cases | SO₂ (commonly) | “Oxidising acid” for some anions; also strong dehydrating agent |
-| **Chlorine water / hypochlorous acid (HOCl)** | Oxidising + bleaching action | Cl⁻ | Used in bleaching/disinfection context |
-| **Bleaching powder (CaOCl₂ / Ca(OCl)Cl)** | Oxidising + bleaching; converts dyes → colorless forms | Cl⁻ (overall) | Releases “available chlorine”; oxidant via OCl⁻/HOCl |
-| **Hypochlorites (OCl⁻, e.g., NaOCl)** | Oxidation/bleaching; organic oxidations in some contexts | Cl⁻ | Same oxidising species family as bleaching powder |
-| **Chlorate (KClO₃)** | Oxidises on heating / in lab prep contexts | Cl⁻ | Often appears in oxygen preparation/oxidation reactions |
-| **Permanganate/dichromate “in redox titrations”** | Standard oxidants in volumetric analysis | Mn²⁺ / Cr³⁺ | Included because NCERT uses them heavily in redox chapter problems |
-| **Manganese dioxide (MnO₂)** | Oxidises Cl⁻ (from HCl) to Cl₂ (lab prep) / other oxidations | Mn²⁺ (in acid) | Standard lab oxidant in inorganic preparations |
-| **Lead dioxide (PbO₂)** | Oxidant in some inorganic preparations | Pb²⁺ | Less common but appears as a strong oxidant in inorganic chemistry contexts |
-| **Ferric ion (Fe³⁺)** | Oxidises I⁻ → I₂; Fe³⁺ ↔ Fe²⁺ redox | Fe²⁺ | Mild oxidant; shows in redox and electrochemistry |
-| **Cupric ion (Cu²⁺)** | Oxidises more reactive metals; involved in displacement/redox | Cu⁺ / Cu | Common in redox/displacement examples |
-| **Silver ion (Ag⁺)** | Oxidises Cu → Cu²⁺ etc. (cell reactions) | Ag(s) | Standard electrochemical cell examples (Ag⁺/Ag has high E°) |
-| **Acidified iodate / bromate (e.g., IO₃⁻, BrO₃⁻)** | Oxidise I⁻ → I₂ (iodometry contexts) | I⁻ / Br⁻ (overall reduced products) | Appears in some redox/analytical-style examples; keep if used in your class notes |
-| **Peroxydisulfate (S₂O₈²⁻)** | Strong oxidant in aqueous redox examples | SO₄²⁻ | Often mentioned as a strong oxidant (electrochem/redox context) |
+| **O₂ (oxygen)** | Air/heat; combustion | Moderate | Burning / oxide formation | Metals/non-metals → oxides; combustion oxidations | O²⁻ (in oxides), H₂O (in combustion) | **XI** Redox, Hydrogen, s/p‑block; **XII** Everyday chemistry (contextual) |
+| **O₃ (ozone)** | Usually inert solvent then workup (organic) | Strong | Ozonolysis gives carbonyls after workup | Alkenes → ozonides → aldehydes/ketones (workup-dependent) | O₂ | **XI** Environmental; **XII** Haloalkanes/arenes (unsaturation ideas), Organic conversions |
+| **Cl₂ / Br₂ (halogens)** | Aqueous / organic solvent (context) | Moderate–Strong | Oxidises I⁻ → I₂ (brown), Fe²⁺ → Fe³⁺ | Halide oxidation, redox displacement; halogenation (organic) | Cl⁻ / Br⁻ | **XI** Redox + p‑block; **XII** p‑block + organic chapters |
+| **H₂O₂** | Acidic/basic/neutral (must specify) | Moderate | Often liberates I₂ from I⁻ (via intermediate steps) | Oxidant in many aqueous redox examples | H₂O | **XI** Redox (dual role); **XII** Electrochem (redox reasoning) |
+| **KMnO₄ (acidified)** | **H⁺** (dil. H₂SO₄) | Strong | Purple → **colorless** (Mn²⁺) | Fe²⁺ → Fe³⁺; C₂O₄²⁻ → CO₂; strong organic oxidations (as “\[O\]”) | Mn²⁺ | **XI** Redox; **XII** d‑block (Mn), Alcohols/Carbonyls conversions |
+| **KMnO₄ (neutral/alkaline)** | Neutral or **OH⁻** | Mild–Moderate | Purple → **brown MnO₂ ppt** | Unsaturation test (Baeyer); milder oxidations | MnO₂ (often) / MnO₄²⁻ (in strong base) | **XI** Redox + Hydrocarbons; **XII** Organic conversions |
+| **K₂Cr₂O₇ / H⁺ (acidified dichromate)** | **H⁺** | Strong | **Orange → green** (Cr³⁺) | Alcohols oxidations; Fe²⁺ → Fe³⁺ (standard redox) | Cr³⁺ | **XI** Redox; **XII** d‑block (Cr), Alcohols/Carbonyls conversions |
+| **CrO₃ / H⁺ (“chromic acid”, Cr(VI))** | Acidic | Strong | Same Cr(VI) → Cr(III) trend | Organic oxidations written as “\[O\]” in conversions | Cr³⁺ | **XII** Alcohols/Phenols/Ethers; Aldehydes/Ketones/Acids (conversion logic) |
+| **Conc. HNO₃** | Concentrated; often warm | Strong | Brown fumes (NO₂) common | Oxidising acid for metals/non-metals; p‑block oxidations | NO₂ / NO (mixture) | **XI/XII** p‑block; **XI** Hydrogen (oxidising acids idea) |
+| **Hot conc. H₂SO₄** | Hot, concentrated | Moderate (oxidant) | Often gives SO₂ smell (pungent) | Oxidises Br⁻/I⁻ (common exam point) | SO₂ (commonly) | **XI/XII** p‑block + qualitative redox reasoning |
+| **HOCl / chlorine water** | Aqueous | Moderate | Bleaching/disinfection | Oxidises colored substances (bleaching); redox in water | Cl⁻ | **XI** Environmental; **XI/XII** p‑block (Cl chemistry) |
+| **Bleaching powder (CaOCl₂ / “available chlorine”)** | Moisture present | Moderate | Bleaching action | Oxidative bleaching (dyes → colorless) | Cl⁻ (overall) | **XI** Environmental; p‑block (chlorine compounds) |
+| **Hypochlorite (OCl⁻, e.g., NaOCl)** | Basic aqueous | Moderate | Bleaching | Oxidative bleaching / mild oxidations | Cl⁻ | **XI** Environmental; p‑block (chlorine compounds) |
+| **KClO₃ (chlorate)** | Heating / catalyst (lab) | Strong (on heating) | O₂ evolution (prep context) | Oxidising agent in lab preparations / decomposition | Cl⁻ (overall) | **XI/XII** p‑block / general inorganic preparations |
+| **MnO₂** | Often with conc. HCl (lab prep) | Moderate | Cl₂ evolution (greenish-yellow) | Oxidises Cl⁻ (from HCl) → Cl₂ | Mn²⁺ (in acid) | **XI/XII** p‑block (Cl₂ prep) |
+| **PbO₂** | Acidic (context) | Strong | Depends on reaction | Strong oxidant in inorganic redox examples | Pb²⁺ | **XII** d‑block/coordination adjacent redox examples (where used) |
+| **Fe³⁺** | Aqueous | Mild–Moderate | I⁻ → I₂ (brown) in examples | Oxidises I⁻ → I₂; general redox pair Fe³⁺/Fe²⁺ | Fe²⁺ | **XI** Redox; **XII** Electrochem (E° reasoning) |
+| **Cu²⁺** | Aqueous | Mild–Moderate | Cu deposition / color changes | Oxidises more reactive metals in displacement/redox examples | Cu⁺ / Cu(s) | **XI** Redox; **XII** Electrochem |
+| **Ag⁺** | Aqueous | Moderate | Ag deposition | Cell reactions; oxidises Cu → Cu²⁺ etc. | Ag(s) | **XII** Electrochemistry |
+| **S₂O₈²⁻ (peroxydisulfate)** | Aqueous | Strong | Often written as strong oxidant in reactions | Strong aqueous oxidant used in redox reasoning | SO₄²⁻ | **XII** Electrochemistry / redox applications (where mentioned) |
 
-## Quick “strong oxidants” list (exam-style)
+## Most-used “strong oxidants” (exam shortlist)
 
-- **KMnO₄ (acidic)**, **K₂Cr₂O₇ (acidic)**, **O₃**, **HNO₃ (conc)**, **halogens (esp. F₂/Cl₂)**, **S₂O₈²⁻**
+- **Acidified KMnO₄**, **acidified K₂Cr₂O₇ / Cr(VI)**, **O₃**, **conc. HNO₃**, **Cl₂**, **S₂O₈²⁻**
 
-## If you want this to be 100% NCERT-chapter-mapped
+## High-yield “medium decides product” reminders
 
-Tell me whether you want the table split into:
-- **Class 11** (Redox + s/p block basics) vs **Class 12** (Electrochem + d/f block + organic chapters), and
-- **inorganic oxidants** vs **organic oxidation reagents**
+- **KMnO₄**: acidic → Mn²⁺ (decolourisation), neutral/alkaline → MnO₂ (brown ppt).
+- **Cr(VI)** (dichromate/chromic acid): acidic medium; orange → green is the memory hook.
+- **H₂O₂**: can be oxidant or reductant; always check the other reagent/medium.
 
-Then I’ll reorganize it and add “chapter” columns (without reproducing textbook text).
+> If you want, I can also split this into two tables: **Inorganic oxidants** vs **Organic oxidation reagents** (still NCERT-aligned).
 
