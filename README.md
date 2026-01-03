@@ -10,3 +10,4 @@ This repo is the source for the class site:
 - Reimer–Tiemann overview: `docs/reactions/reimer_tiemann.md`
 - Cannizzaro “4th order” discussion: `docs/reactions/cannizzaro_order.md`
 - Assets workflow (SVG + 3D models): `docs/graphics_and_models.md`
+- NCERT Chemistry textbook navigation (Class 11/12): `docs/ncert/chemistry/`

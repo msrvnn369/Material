@@ -37,6 +37,10 @@ extra_css:
 
 nav:
   - Home: index.md
+  - NCERT:
+      - Chemistry:
+          - Class 11 (Textbooks): ncert/chemistry/class-11.md
+          - Class 12 (Textbooks): ncert/chemistry/class-12.md
   - Questions:
       - List major SN2 reactions and exceptions: reactions/sn2.md
       - Mechanism of the Reimer–Tiemann reaction: reactions/reimer_tiemann.md
