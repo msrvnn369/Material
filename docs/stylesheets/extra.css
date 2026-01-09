@@ -22,3 +22,62 @@ body {
   margin-top: 0.25rem;
 }
 
+/* Question browser */
+.qbank-status {
+  margin: 0.75rem 0 1rem;
+  opacity: 0.85;
+}
+
+.qbank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.qbank-card {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.qbank-q-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.qbank-q-title {
+  font-weight: 700;
+}
+
+.qbank-q-meta {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.qbank-q-stem {
+  white-space: pre-wrap; /* keep OCR line breaks */
+  line-height: 1.45;
+}
+
+.qbank-q-tags {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.qbank-tag {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.78rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
