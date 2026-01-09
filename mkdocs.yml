@@ -42,5 +42,6 @@ nav:
       - Mechanism of the Reimer–Tiemann reaction: reactions/reimer_tiemann.md
       - Why is the Cannizzaro reaction sometimes 4th order?: reactions/cannizzaro_order.md
       - Diborane (B2H6) bonding + geometry: problems/diborane-bonding.md
+      - Ionic Equilibrium Question Database (beta): questions/ionic_equilibrium_db.md
   - Assets:
       - Graphics & 3D models workflow: graphics_and_models.md
