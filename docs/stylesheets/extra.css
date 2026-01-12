@@ -10,6 +10,85 @@ body {
   overflow: hidden;
 }
 
+.hydrogen3d {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(250, 250, 250, 0.7);
+}
+
+.hydrogen3d .h3d-wrap {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) 1fr;
+  gap: 12px;
+  padding: 12px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .hydrogen3d .h3d-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hydrogen3d .h3d-controls {
+  font-size: 0.95rem;
+}
+
+.hydrogen3d .h3d-controls label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: 600;
+}
+
+.hydrogen3d .h3d-controls input,
+.hydrogen3d .h3d-controls select {
+  width: 100%;
+  max-width: 100%;
+}
+
+.hydrogen3d .h3d-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.hydrogen3d .h3d-row > div label {
+  margin-top: 0;
+}
+
+.hydrogen3d .h3d-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.hydrogen3d .h3d-actions button {
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.hydrogen3d .h3d-actions button:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.hydrogen3d .h3d-view {
+  width: 100%;
+  height: 520px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hydrogen3d .h3d-hint {
+  font-size: 0.88rem;
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
 .figure-caption {
   font-size: 0.9rem;
   opacity: 0.8;

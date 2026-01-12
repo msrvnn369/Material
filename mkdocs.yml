@@ -31,6 +31,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - javascripts/3Dmol-min.js
   - javascripts/3dmol-helpers.js
+  - javascripts/hydrogen-spherical.js
 
 extra_css:
   - stylesheets/extra.css
@@ -42,5 +43,7 @@ nav:
       - Mechanism of the Reimer–Tiemann reaction: reactions/reimer_tiemann.md
       - Why is the Cannizzaro reaction sometimes 4th order?: reactions/cannizzaro_order.md
       - Diborane (B2H6) bonding + geometry: problems/diborane-bonding.md
+  - Quantum mechanics:
+      - "Hydrogen: spherical coordinates & wave equation": quantum/hydrogen_spherical_coordinates.md
   - Assets:
       - Graphics & 3D models workflow: graphics_and_models.md
